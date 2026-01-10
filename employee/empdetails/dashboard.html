@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>employees Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>employees details </h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'employees' %}">Employees</a></li>
+                <li><a href="{% url 'departments' %}">Departments</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="stats">
+            <div class="stat-card">
+                <h2>Total employees</h2>
+                <p>{{ total_employees }}</p>
+            </div>
+            <div class="stat-card">
+                <h2>Total Departments</h2>
+                <p>{{ total_departments }}</p>
+            </div>
+            <div class="stat-card">
+                <h2>Active Enrollments</h2>
+                <p>{{ active_enrollments }}</p>
+            </div>
+        </section>
+        <section class="recent-activities">
+            <h2>Recent Activities</h2>
+            <ul>
+                {% for activity in recent_activities %}
+                    <li>{{ activity }}</li>
+                {% empty %}
+                    <li>No recent activities.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 employees details </p>
+    </footer>
+</body>
+</html>
